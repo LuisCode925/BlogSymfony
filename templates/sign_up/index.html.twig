@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Registrarse{% endblock %}
+
+{% block body %}
+
+    <div class="container col-lg-4 bg-light p-5 rounded my-5">
+       
+        <h3>Registro Nuevos Usuarios</h3>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {{ form_start(sign_up_form) }}
+            <div class="mb-3">
+                {{ form_label(sign_up_form.email, 'Correo:', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(sign_up_form.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(sign_up_form.password, 'Contraseña:', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(sign_up_form.password, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(sign_up_form.names, 'Nombre(s):', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(sign_up_form.names, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(sign_up_form.last_names, 'Apellidos:', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(sign_up_form.last_names, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(sign_up_form.Occupation, 'Ocupacion:', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(sign_up_form.Occupation, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            {{ form_widget(sign_up_form.Registrar) }}
+
+        {{ form_end(sign_up_form) }}
+ 
+    </div>
+
+{% endblock %}

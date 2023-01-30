@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Crear Post{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container my-4">
+        <h3>Crea un Post de algún tema interesante</h3>
+        {{ form_start(form_post) }}
+            <div class="mb-3">
+                {{ form_label(form_post.title, 'Titulo:', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form_post.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form_post.thumb, 'Imagen:', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form_post.thumb, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form_post.content, 'Contenido:', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form_post.content, {'attr': {'class': 'form-control', 'rows': 15 }}) }}
+            </div>
+        {{ form_widget(form_post.Guardar) }}
+
+        {{ form_end(form_post) }}
+    </div>
+{% endblock %}

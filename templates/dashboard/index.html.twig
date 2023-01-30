@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Inicio {% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <div class="count my-4">
+            <h1><span>El numero de posts publicados: </span>{{ posts.getTotalItemCount }}</h1>
+        </div>
+        
+        <div class="posts d-flex">
+            {% for article in posts %}
+                <div class="card col-lg-4 p-0 mb-3 mr-3">
+                    <a href="{{ asset('uploads/thumb/' ~ article.thumb )}}" data-lightbox="{{ article.thumb }}" data-title="{{ article.title }}">
+                        <img class="card-img-top" src="{{ asset('uploads/thumb/' ~ article.thumb )}}">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ article.title }}</h4>
+                        <p class="card-text">{{ article.content[:240] ~ '...' }}</p>
+                        <a href="{{ path('app_show_post', {id: article.id}) }}" class="btn btn-primary">Ver Articulo</a>
+                    </div>
+                    <div class="card-footer">
+                        Fecha: {{ article.created_at | date('d-m-Y') }} <br>
+                        Autor: {{ article.names ~ " " ~ article.last_names }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center navigation mt-3">
+        {{ knp_pagination_render(posts) }}
+    </div>
+
+{% endblock %}
